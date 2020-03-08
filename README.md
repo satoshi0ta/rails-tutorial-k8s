@@ -11,7 +11,7 @@ $ rm -fr sample_apps
 [commit 4227d07](https://github.com/dev-sota/rails-tutorial-modify/commit/4227d07c1f5443cb5dac9e3a5d8fc84a0ca19fbe)
 
 ## Setting up database.yml
-[commit ]()
+[commit e16db1a](https://github.com/dev-sota/rails-tutorial-modify/commit/e16db1a507db230373c3adffd166a21b67505d8a)
 
 ## Setting up Dockerfile
 [commit 4989f97](https://github.com/dev-sota/rails-tutorial-modify/commit/4989f97e371d109f1aa80ca8f61a4ae452c98584)
