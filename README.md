@@ -17,7 +17,7 @@ $ rm -fr sample_apps
 [commit 4989f97](https://github.com/dev-sota/rails-tutorial-modify/commit/4989f97e371d109f1aa80ca8f61a4ae452c98584)
 
 ## Setting up docker-compose.yml
-[commit ]()
+[commit c261cc0](https://github.com/dev-sota/rails-tutorial-modify/commit/c261cc01216e5f997c430429a7cfffabca6f3061)
 
 ## Useful Command
 ```
