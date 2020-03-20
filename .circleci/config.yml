@@ -1,19 +1,13 @@
 version: 2.1
 jobs:
-  build:
+  rubocop:
     docker:
       - image: circleci/ruby:2.4.9-node-browsers-legacy
         environment:
+          BUNDLER_VERSION: 1.17.3
           BUNDLE_PATH: vendor/bundle
           RAILS_ENV: test
-          DB_NAME: rails_tutorial_test
-      - image: circleci/mysql:5.7
-        environment:
-          MYSQL_USER: root
-          MYSQL_ROOT_PASSWORD:
-          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     steps:
       - checkout
       - run: bundle install --path vendor/bundle --clean --jobs 4 --retry 3
-      - run: bundle exec rails db:create db:migrate RAILS_ENV=test
       - run: bundle exec rubocop
