@@ -6,6 +6,7 @@ jobs:
         environment:
           BUNDLE_PATH: vendor/bundle
           RAILS_ENV: test
+          DB_HOST: db
       - image: circleci/mysql:5.7
         environment:
           MYSQL_USER: root
