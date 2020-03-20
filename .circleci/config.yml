@@ -6,7 +6,7 @@ jobs:
         environment:
           BUNDLE_PATH: vendor/bundle
           RAILS_ENV: test
-          DB_HOST: db
+          DB_NAME: rails_tutorial_test
       - image: circleci/mysql:5.7
         environment:
           MYSQL_USER: root
