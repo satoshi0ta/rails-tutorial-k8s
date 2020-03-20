@@ -14,5 +14,5 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
+          name: Run rubocop
+          command: bundle exec rubocop
