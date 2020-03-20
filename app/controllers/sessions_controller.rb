@@ -1,18 +1,19 @@
-class SessionsController < ApplicationController
+# frozen_string_literal: true
 
+class SessionsController < ApplicationController
   # GET /login
   def new
-    #@session = Session.new
+    # @session = Session.new
   end
 
   # POST /login
   def create
     user = User.find_by(email: params[:session][:email])
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       if user.activated?
         # Success
         log_in user
-        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        params[:session][:remember_me] == "1" ? remember(user) : forget(user)
         redirect_back_or user
       else
         message  = "Account not activated. "
@@ -22,8 +23,8 @@ class SessionsController < ApplicationController
       end
     else
       # Failure
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
+      flash.now[:danger] = "Invalid email/password combination"
+      render "new"
     end
   end
 

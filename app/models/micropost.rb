@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Micropost < ApplicationRecord
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
@@ -9,10 +11,8 @@ class Micropost < ApplicationRecord
 
   private
 
-    # アップロードされた画像のサイズをバリデーションする
-    def picture_size
-      if picture.size > 1.megabytes
-        errors.add(:picture, "should be less than 1MB")
-      end
-    end
+  # アップロードされた画像のサイズをバリデーションする
+  def picture_size
+    errors.add(:picture, "should be less than 1MB") if picture.size > 1.megabytes
+  end
 end

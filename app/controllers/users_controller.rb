@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit,
-                                        :update, :destroy,
-                                        :following, :followers]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_user, only: %i[index edit
+                                          update destroy
+                                          following followers]
+  before_action :correct_user,   only: %i[edit update]
   before_action :admin_user,     only: :destroy
 
   def index
-    #@users = User.all
+    # @users = User.all
     @users = User.paginate(page: params[:page])
   end
 
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
       redirect_to root_url
     else
       # Failure
-      render 'new'
+      render "new"
     end
   end
 
@@ -45,17 +47,17 @@ class UsersController < ApplicationController
     # => app/views/users/edit.html.erb
   end
 
-  #PATCH /users/:id
+  # PATCH /users/:id
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       # Success
       flash[:success] = "Profile updated"
       redirect_to @user
     else
       # Failure
       # => @user.errors.full_messages()
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -70,33 +72,34 @@ class UsersController < ApplicationController
     @title = "Following"
     @user  = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
+    render "show_follow"
   end
 
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
+    render "show_follow"
   end
 
   private
 
-    def user_params
-      params.require(:user).permit(
-        :name, :email, :password,
-        :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(
+      :name, :email, :password,
+      :password_confirmation
+    )
+  end
 
-    # 正しいユーザーかどうか確認
-    def correct_user
-      # GET   /users/:id/edit
-      # PATCH /users/:id
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
+  # 正しいユーザーかどうか確認
+  def correct_user
+    # GET   /users/:id/edit
+    # PATCH /users/:id
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end
