@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  rubocop:
+  build:
     docker:
       - image: circleci/ruby:2.4.9-node-browsers-legacy
         environment:
