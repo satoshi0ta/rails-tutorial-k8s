@@ -6,10 +6,14 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.4.9
-    executor: default
+        environment:
+          RAILS_ENV: test
+      - image: circleci/mysql:5.7
+
+    working_directory: ~/rails-tutorial-modify
+
     steps:
       - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+        name: run rubocop
+        command: bundle exec rubocop
