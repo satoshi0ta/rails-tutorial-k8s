@@ -19,7 +19,10 @@ $ rm -fr sample_apps
 ## Setting up docker-compose.yml
 [commit c261cc0](https://github.com/dev-sota/rails-tutorial-modify/commit/c261cc01216e5f997c430429a7cfffabca6f3061)
 
-## Useful Command
+## Install RuboCop
+[commit 9ba11c1](https://github.com/dev-sota/rails-tutorial-modify/commit/9ba11c1bdb67211fc58f05515df420db8ce02bda)
+
+## Useful Commands
 ```
 $ docker system df
 $ docker system prune -a --volumes
