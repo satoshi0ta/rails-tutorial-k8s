@@ -1,7 +1,7 @@
 version: '3'
 services:
   db:
-    container_name: "mysql"
+    container_name: 'mysql'
     image: mysql:5.7
     environment:
       MYSQL_USER: root
@@ -11,16 +11,16 @@ services:
       - '3306:3306'
 
   app:
-    container_name: "rails"
+    container_name: 'rails'
     build:
       context: .
       dockerfile: Dockerfile
     environment:
       RAILS_ENV: development
       DB_HOST: db
-    command: bash ./docker.sh
+    command: bundle exec rails s -p 3000 -b 0.0.0.0
     ports:
-      - '8888:8888'
+      - '3000:3000'
     volumes:
       - .:/app_root
     depends_on:
