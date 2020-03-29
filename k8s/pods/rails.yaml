@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: demo
+  name: rails
+spec:
+  selector:
+    matchLabels:
+      app: rails
+  template:
+    metadata:
+      labels:
+        app: rails
+    spec:
+      containers:
+      - name: rails
+        image: devsota/rails_tutorial_modify:latest
+        imagePullPolicy: Always
+        command: ["bundle", "exec", "rails", "s"]
+        envFrom:
+        - configMapRef:
+            name: rails-config
+        ports:
+        - containerPort: 3000
