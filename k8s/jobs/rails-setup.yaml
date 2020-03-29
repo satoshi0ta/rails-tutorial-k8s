@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: setup
-        image: devsota/rails_tutorial_modify:latest
+        image: devsota/rails-tutorial-modify_app:latest
         imagePullPolicy: Always
         command: ["/bin/sh"]
         args: ["-c", "bundle exec rake db:create && bundle exec rake db:migrate"]
