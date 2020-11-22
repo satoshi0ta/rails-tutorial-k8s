@@ -4,7 +4,7 @@
 $ git clone https://github.com/yasslab/sample_apps.git
 $ mkdir rails_tutorial_modify
 $ cp -p sample_apps/5_1_2/ch14/* rails_tutorial_modify/
-$ rm -fr sample_apps
+$ rm -rf sample_apps
 ```
 
 ## Setting up MySQL
